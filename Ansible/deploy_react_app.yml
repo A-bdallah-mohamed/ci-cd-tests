@@ -1,0 +1,43 @@
+---
+- name: Deploy react app to aws instances
+  hosts: aws_servers
+  become: yes
+
+
+
+
+  tasks: 
+    - name: stop apche
+      service: 
+        name: apache2
+        state: stopped  
+        enabled: no
+
+
+
+    - name: ensure docker is installed
+      apt:
+        name: docker.io
+        state: present
+        update_cache: yes
+
+
+  #  - name: log in to docker hub 
+   #   docker_login: 
+    #    username: "abddallahmohammed21@gmail.com"
+    #    password: "Abdola-2004"
+
+    - name: pull latest image
+      docker_image: 
+        name: "docker.io/abdallahmohamed21/guess-my-country"
+        tag: latest
+        source: pull
+
+    - name : run container 
+      docker_container: 
+        name: react-app 
+        image: "docker.io/abdallahmohamed21/guess-my-country:latest"
+        state: started
+        restart_policy: always
+        published_ports: 
+          - "80:80"
