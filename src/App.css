@@ -5,7 +5,7 @@
   flex-direction: column;
   width: 100vw;
   height: 100vh;
-  background-color: #000000;
+  background-color: #ffffff;
 }
 .container h1,.container h2{
   color: rgb(0, 0, 0);
@@ -16,9 +16,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: rgb(210, 210, 210);
+  background-color: rgb(255, 255, 255);
   padding: 50px;
-  border-radius: 15px;
+  border-radius: 25px;
   height: 60vh;
   width: 60vw;
+  border: 1px dashed black;
+  
 }
